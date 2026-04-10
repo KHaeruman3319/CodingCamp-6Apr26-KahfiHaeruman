@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+  <div class="dashboard">
+
+    <section id="greeting-widget" class="widget">
+      <h1 id="greeting-message">Good Morning</h1>
+      <p id="greeting-name-hint">Click greeting to add your name</p>
+      <p id="greeting-time">00:00:00</p>
+      <p id="greeting-date">Monday, January 1, 2025</p>
+    </section>
+
+    <section id="timer-widget" class="widget">
+      <h2>Focus Timer</h2>
+      <div class="timer-presets">
+        <button class="timer-preset active" data-seconds="1500">Focus Duration</button>
+        <button class="timer-preset" data-seconds="300">Short Break</button>
+        <button class="timer-preset" data-seconds="1800">Long Break</button>
+      </div>
+      <div class="timer-adjust">
+        <button id="timer-minus" aria-label="Subtract 1 minute">−1m</button>
+        <p id="timer-display">25:00</p>
+        <button id="timer-plus" aria-label="Add 1 minute">+1m</button>
+      </div>
+      <div class="timer-controls">
+        <button id="timer-start">Start</button>
+        <button id="timer-stop">Stop</button>
+        <button id="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <section id="todo-widget" class="widget">
+      <h2>To-Do List</h2>
+      <form id="todo-form">
+        <input id="todo-input" type="text" placeholder="Add a new task..." autocomplete="off" />
+        <button type="submit">Add</button>
+      </form>
+      <span id="todo-error" class="error" aria-live="polite"></span>
+      <ul id="todo-list"></ul>
+    </section>
+
+    <section id="links-widget" class="widget">
+      <h2>Quick Links</h2>
+      <form id="links-form">
+        <input id="links-label" type="text" placeholder="Label" autocomplete="off" />
+        <input id="links-url" type="text" placeholder="https://example.com" autocomplete="off" />
+        <button type="submit">Add</button>
+      </form>
+      <span id="links-error" class="error" aria-live="polite"></span>
+      <div id="links-list"></div>
+    </section>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+/* ============================================================
+   CSS Custom Properties — Light (default) & Dark themes
+   ============================================================ */
+:root {
+  --bg-page:        #f0f2f5;
+  --bg-widget:      #ffffff;
+  --bg-input:       #ffffff;
+  --bg-btn:         #f9fafb;
+  --bg-btn-hover:   #f3f4f6;
+  --bg-btn-primary: #1a1a2e;
+  --bg-error:       #fff5f5;
+
+  --text-primary:   #1a1a2e;
+  --text-secondary: #374151;
+  --text-muted:     #6b7280;
+  --text-completed: #9ca3af;
+  --text-error:     #b91c1c;
+
+  --border:         #d1d5db;
+  --border-hover:   #9ca3af;
+  --border-error:   #fca5a5;
+  --border-error-hover: #f87171;
+  --divider:        #f3f4f6;
+
+  --shadow:         0 2px 10px rgba(0, 0, 0, 0.07);
+  --focus-ring:     rgba(99, 102, 241, 0.15);
+
+  --greeting-bg-start: #1a1a2e;
+  --greeting-bg-end:   #16213e;
+}
+
+[data-theme="dark"] {
+  --bg-page:        #0f1117;
+  --bg-widget:      #1e2130;
+  --bg-input:       #252a3a;
+  --bg-btn:         #252a3a;
+  --bg-btn-hover:   #2e3347;
+  --bg-btn-primary: #6366f1;
+
+  --text-primary:   #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #94a3b8;
+  --text-completed: #64748b;
+  --text-error:     #fca5a5;
+
+  --border:         #374151;
+  --border-hover:   #4b5563;
+  --border-error:   #7f1d1d;
+  --border-error-hover: #991b1b;
+  --divider:        #2d3348;
+
+  --shadow:         0 2px 10px rgba(0, 0, 0, 0.4);
+  --focus-ring:     rgba(99, 102, 241, 0.25);
+
+  --greeting-bg-start: #1e2130;
+  --greeting-bg-end:   #252a3a;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ============================================================
+   Theme Toggle Button
+   ============================================================ */
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  background: var(--bg-widget);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.15s, border-color 0.15s;
+  line-height: 1;
+}
+
+#theme-toggle:hover {
+  background: var(--bg-btn-hover);
+  border-color: var(--border-hover);
+}
+
+/* ============================================================
+   Dashboard Grid Layout
+   ============================================================ */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   Widget Base
+   ============================================================ */
+.widget {
+  background: var(--bg-widget);
+  border-radius: 10px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.widget h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   Greeting Widget
+   ============================================================ */
+#greeting-widget {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: linear-gradient(135deg, var(--greeting-bg-start) 0%, var(--greeting-bg-end) 100%);
+  color: #ffffff;
+}
+
+#greeting-message {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+#greeting-time {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+#greeting-date {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================================
+   Timer Widget
+   ============================================================ */
+#timer-display {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.timer-controls button {
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-btn);
+  color: var(--text-secondary);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.timer-controls button:hover {
+  background: var(--bg-btn-hover);
+  border-color: var(--border-hover);
+}
+
+#timer-start {
+  background: var(--bg-btn-primary);
+  color: #ffffff;
+  border-color: var(--bg-btn-primary);
+}
+
+#timer-start:hover {
+  opacity: 0.88;
+}
+
+/* ============================================================
+   Todo Widget
+   ============================================================ */
+#todo-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+#todo-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+#todo-form button {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--bg-btn-primary);
+  border-radius: 6px;
+  background: var(--bg-btn-primary);
+  color: #ffffff;
+  transition: opacity 0.15s;
+}
+
+#todo-form button:hover {
+  opacity: 0.88;
+}
+
+#todo-list {
+  list-style: none;
+  margin-top: 0.75rem;
+}
+
+#todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--divider);
+  flex-wrap: wrap;
+}
+
+#todo-list li:last-child {
+  border-bottom: none;
+}
+
+/* Completed task — strikethrough */
+#todo-list li.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--text-completed);
+}
+
+.todo-toggle {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  accent-color: #6366f1;
+}
+
+.todo-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  font-size: 0.9375rem;
+}
+
+.todo-edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+}
+
+.todo-edit-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Shared action button style for todo list items */
+#todo-list button {
+  padding: 0.25rem 0.55rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-btn);
+  color: var(--text-secondary);
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+#todo-list button:hover {
+  background: var(--bg-btn-hover);
+  border-color: var(--border-hover);
+}
+
+.todo-delete {
+  color: var(--text-error) !important;
+  border-color: var(--border-error) !important;
+  background: var(--bg-error) !important;
+}
+
+.todo-delete:hover {
+  border-color: var(--border-error-hover) !important;
+}
+
+/* ============================================================
+   Links Widget
+   ============================================================ */
+#links-form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#links-label,
+#links-url {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+#links-label:focus,
+#links-url:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+#links-form button {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--bg-btn-primary);
+  border-radius: 6px;
+  background: var(--bg-btn-primary);
+  color: #ffffff;
+  transition: opacity 0.15s;
+}
+
+#links-form button:hover {
+  opacity: 0.88;
+}
+
+#links-list {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.link-item:last-child {
+  border-bottom: none;
+}
+
+.link-btn {
+  flex: 1;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: var(--bg-btn);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  word-break: break-all;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.link-btn:hover {
+  background: var(--bg-btn-hover);
+  border-color: var(--border-hover);
+}
+
+.link-delete {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border-error);
+  border-radius: 4px;
+  background: var(--bg-error);
+  color: var(--text-error);
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.link-delete:hover {
+  border-color: var(--border-error-hover);
+}
+
+/* ============================================================
+   Inline Error Messages
+   ============================================================ */
+.error {
+  display: block;
+  min-height: 1.25em;
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-error);
+  background: var(--bg-error);
+  border-left: 3px solid var(--border-error-hover);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.error:empty {
+  background: transparent;
+  border-left-color: transparent;
+  padding: 0;
+}
+
+/* ============================================================
+   Greeting Name Input (inline edit)
+   ============================================================ */
+#greeting-name-hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.greeting-name-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  outline: none;
+  padding: 0 0.25rem;
+}
+
+.greeting-name-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.greeting-name-input:focus {
+  border-bottom-color: #ffffff;
+}
+
+/* ============================================================
+   Todo Drag & Drop
+   ============================================================ */
+.todo-drag-handle {
+  flex-shrink: 0;
+  cursor: grab;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 0.1rem;
+  user-select: none;
+}
+
+.todo-drag-handle:active {
+  cursor: grabbing;
+}
+
+#todo-list li.dragging {
+  opacity: 0.4;
+}
+
+#todo-list li.drag-over {
+  outline: 2px dashed #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Timer Adjust Controls
+   ============================================================ */
+.timer-adjust {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.timer-adjust #timer-display {
+  margin-bottom: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.timer-adjust button {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-btn);
+  color: var(--text-secondary);
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.timer-adjust button:hover {
+  background: var(--bg-btn-hover);
+  border-color: var(--border-hover);
+}
+
+/* ============================================================
+   Timer Preset Buttons
+   ============================================================ */
+.timer-presets {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.timer-preset {
+  flex: 1;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-btn);
+  color: var(--text-secondary);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.timer-preset:hover {
+  background: var(--bg-btn-hover);
+  border-color: var(--border-hover);
+}
+
+.timer-preset.active {
+  background: var(--bg-btn-primary);
+  border-color: var(--bg-btn-primary);
+  color: #ffffff;
+}
